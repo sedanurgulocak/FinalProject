@@ -29,12 +29,13 @@ namespace Business.Concrete
             return new SuccessResult(Messages.ProductAdded);
         }
 
-        public List<Product> GetAll()
+        public IDataResult<List<Product>> GetAll()
         {
             //iş kodları
             //Yetkisi var mı ?
             //İş kodlarını geçince artık veri erişim katmanına erişmesi gerek 
-            return _productDal.GetAll();
+
+            return new DataResult(_productDal.GetAll());
         }
 
         public List<Product> GetAllByCategoryId(int id)
