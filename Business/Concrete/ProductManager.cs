@@ -16,6 +16,12 @@ namespace Business.Concrete
             _productDal = productDal;
         }
 
+        public void Add(Product product)
+        {
+            //Business codes
+            _productDal.Add(product);
+        }
+
         public List<Product> GetAll()
         {
             //iş kodları
