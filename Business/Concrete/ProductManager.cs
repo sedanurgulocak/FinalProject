@@ -20,8 +20,12 @@ namespace Business.Concrete
         public IResult Add(Product product)
         {
             //Business codes
+            if (product.ProductName.Length<2)
+            {
+                return new ErrorResult("Ürün ismi en az 2 karakter olmalı");
+            }
             _productDal.Add(product);
-            return new Result(true,"Ürün eklendi");
+            return new SuccessResult("Ürün eklendi");
         }
 
         public List<Product> GetAll()
