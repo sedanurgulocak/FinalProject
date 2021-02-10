@@ -31,11 +31,12 @@ namespace Business.Concrete
 
         public IDataResult<List<Product>> GetAll()
         {
-            //iş kodları
-            //Yetkisi var mı ?
-            //İş kodlarını geçince artık veri erişim katmanına erişmesi gerek 
+            if (DateTime.Now.Hour==22)
+            {
+                return new ErrorResult();
+            }
 
-            return new DataResult(_productDal.GetAll());
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(),true,"Ürünler listelendi");
         }
 
         public List<Product> GetAllByCategoryId(int id)
